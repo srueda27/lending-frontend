@@ -32,13 +32,33 @@ class FormContainer extends React.Component {
         });
     }
 
+    handleSubmit(event) {
+        const axios = require('axios');
+        console.log('Hola');
+        axios.get('/puppies')
+            .then(function (response) {
+                // handle success
+                console.log('hey SUCCESS');
+                console.log(response);
+            })
+            .catch(function (error) {
+                // handle error
+                console.log('hey ERROR');
+                console.log(error);
+            })
+            .then(function () {
+                // always executed
+                console.log('hey');
+            });
+    }
+
     render() {
         return (
-            <div class="form-container">
-                <form onSubmit={this.handleSubmit}>
+            <div className="form-container">
+                <form>
                     <fieldset>
                         <legend>Business Information:</legend>
-                        <label for="tax-id">
+                        <label htmlFor="tax-id">
                             Tax Id:
                                 <input
                                 id="tax-id"
@@ -49,7 +69,7 @@ class FormContainer extends React.Component {
                             />
                         </label>
 
-                        <label for="business-name">
+                        <label htmlFor="business-name">
                             Business Name:
                                 <input id="business-name"
                                 type="text"
@@ -59,7 +79,7 @@ class FormContainer extends React.Component {
                             />
                         </label>
 
-                        <label for="business-address">
+                        <label htmlFor="business-address">
                             Business Address:
                                 <input id="business-address"
                                 type="text"
@@ -69,7 +89,7 @@ class FormContainer extends React.Component {
                             />
                         </label>
 
-                        <label for="business-city">
+                        <label htmlFor="business-city">
                             City:
                                 <input id="business-city"
                                 type="text"
@@ -79,7 +99,7 @@ class FormContainer extends React.Component {
                             />
                         </label>
 
-                        <label for="business-state">
+                        <label htmlFor="business-state">
                             State:
                                 <input id="business-state"
                                 type="text"
@@ -89,7 +109,7 @@ class FormContainer extends React.Component {
                             />
                         </label>
 
-                        <label for="business-postal-code">
+                        <label htmlFor="business-postal-code">
                             Postal Code:
                                 <input id="business-postal-code"
                                 type="text"
@@ -99,11 +119,10 @@ class FormContainer extends React.Component {
                             />
                         </label>
 
-                        <label for="requested-amount">
+                        <label htmlFor="requested-amount">
                             Requested Amount:
                                 <input id="requested-amount"
-                                type="text"
-                                pattern="[0-9]*"
+                                type="number"
                                 name="requested-amount"
                                 onChange={this.myChangeHandler}
                                 required
@@ -113,7 +132,7 @@ class FormContainer extends React.Component {
 
                     <fieldset>
                         <legend>Owner Information:</legend>
-                        <label for="social-security-number">
+                        <label htmlFor="social-security-number">
                             Social Security Number:
                             <input
                                 id="social-security-number"
@@ -124,7 +143,7 @@ class FormContainer extends React.Component {
                             />
                         </label>
 
-                        <label for="owner-name">
+                        <label htmlFor="owner-name">
                             Name:
                             <input
                                 id="owner-name"
@@ -135,7 +154,7 @@ class FormContainer extends React.Component {
                             />
                         </label>
 
-                        <label for="owner-email">
+                        <label htmlFor="owner-email">
                             Email:
                             <input
                                 id="owner-email"
@@ -146,7 +165,7 @@ class FormContainer extends React.Component {
                             />
                         </label>
 
-                        <label for="owner-address">
+                        <label htmlFor="owner-address">
                             Owner Address:
                             <input
                                 id="owner-address"
@@ -157,7 +176,7 @@ class FormContainer extends React.Component {
                             />
                         </label>
 
-                        <label for="owner-city">
+                        <label htmlFor="owner-city">
                             City:
                             <input
                                 id="owner-city"
@@ -168,7 +187,7 @@ class FormContainer extends React.Component {
                             />
                         </label>
 
-                        <label for="owner-state">
+                        <label htmlFor="owner-state">
                             State:
                             <input
                                 id="owner-state"
@@ -179,7 +198,7 @@ class FormContainer extends React.Component {
                             />
                         </label>
 
-                        <label for="owner-postal-code">
+                        <label htmlFor="owner-postal-code">
                             Postal Code:
                             <input
                                 id="owner-postal-code"
@@ -191,6 +210,8 @@ class FormContainer extends React.Component {
                         </label>
 
                     </fieldset>
+
+                    <input className="submit-btn" type="submit" name="submit" value="Submit Form" onClick={this.handleSubmit} />
                 </form>
             </div>
         );
