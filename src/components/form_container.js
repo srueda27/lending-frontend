@@ -32,23 +32,18 @@ class FormContainer extends React.Component {
         });
     }
 
-    handleSubmit(event) {
+    handleSubmit = (event) => {
         const axios = require('axios');
         console.log('Hola');
-        axios.get('/puppies')
+
+        axios.post('/puppy/Sammy', JSON.stringify(this.state))
             .then(function (response) {
-                // handle success
-                console.log('hey SUCCESS');
+                console.log('hey SUCCESS POST');
                 console.log(response);
             })
             .catch(function (error) {
-                // handle error
-                console.log('hey ERROR');
+                console.log('hey ERROR POST');
                 console.log(error);
-            })
-            .then(function () {
-                // always executed
-                console.log('hey');
             });
     }
 
@@ -211,7 +206,13 @@ class FormContainer extends React.Component {
 
                     </fieldset>
 
-                    <input className="submit-btn" type="submit" name="submit" value="Submit Form" onClick={this.handleSubmit} />
+                    <input
+                        className="submit-btn"
+                        type="submit"
+                        name="submit"
+                        value="Submit Form"
+                        onClick={this.handleSubmit}
+                    />
                 </form>
             </div>
         );
