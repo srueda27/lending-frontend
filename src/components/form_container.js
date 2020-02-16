@@ -36,7 +36,7 @@ class FormContainer extends React.Component {
         const axios = require('axios');
         console.log('Hola');
 
-        axios.post('/puppy/Sammy', JSON.stringify(this.state))
+        axios.post('https://shielded-brushlands-56249.herokuapp.com/puppy/Sammy', JSON.stringify(this.state))
             .then(function (response) {
                 console.log('hey SUCCESS POST');
                 console.log(response);
