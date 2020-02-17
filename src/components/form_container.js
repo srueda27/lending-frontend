@@ -114,12 +114,12 @@ class FormContainer extends React.Component {
                             />
                         </label>
 
-                        <label htmlFor="requested-amount">
+                        <label htmlFor="requested_amount">
                             Requested Amount:
-                                <input id="requested-amount"
+                                <input id="requested_amount"
                                 type="number"
                                 min="0"
-                                name="requested-amount"
+                                name="requested_amount"
                                 onChange={this.myChangeHandler}
                                 required
                             />
