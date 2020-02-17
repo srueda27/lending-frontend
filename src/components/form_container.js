@@ -36,7 +36,7 @@ class FormContainer extends React.Component {
         const axios = require('axios');
         console.log('Hola');
 
-        axios.post('/puppy/Sammy', JSON.stringify(this.state))
+        axios.post('/validate_loan', JSON.stringify(this.state))
             .then(function (response) {
                 console.log('hey SUCCESS POST');
                 console.log(response);
@@ -118,6 +118,7 @@ class FormContainer extends React.Component {
                             Requested Amount:
                                 <input id="requested-amount"
                                 type="number"
+                                min="0"
                                 name="requested-amount"
                                 onChange={this.myChangeHandler}
                                 required

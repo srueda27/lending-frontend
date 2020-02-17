@@ -2,8 +2,8 @@ const proxy = require("http-proxy-middleware");
 
 module.exports = function (app) {
     app.use(
-        proxy("/puppy", {
-            target: "https://shielded-brushlands-56249.herokuapp.com",
+        proxy("/validate_loan", {
+            target: "https://vast-chamber-74293.herokuapp.com",
             changeOrigin: true,
             secure: false
         })
