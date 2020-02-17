@@ -20,12 +20,11 @@ form {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   flex-direction: column;
-  row-gap: 15px;
 }
 
 fieldset {
   background: white;
-  margin: 0 15px;
+  margin: 0 15px 15px;
   box-shadow: rgb(58, 57, 57) 5px 5px 10px;
 }
 
