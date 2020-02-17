@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, BrowserRouter as Router } from 'react-router-dom'
-import '../styles/form_container.css';
+import '../prefixers/form.css';
 
 import BusinessInfo from './businessInfo';
 import OwnerInfo from './ownerInfo';
@@ -29,6 +29,10 @@ class FormContainer extends React.Component {
         this.myChangeHandler = this.myChangeHandler.bind(this);
     }
 
+
+    /**
+     * Method in charge of changing the state
+     */
     myChangeHandler(event) {
         const target = event.target;
         const value = target.value;
@@ -39,6 +43,9 @@ class FormContainer extends React.Component {
         });
     }
 
+    /**
+     * Method in charge of performing the call to the external API, sending the state
+     */
     handleSubmitOwnerInfo(event) {
         const axios = require('axios');
         let self = this;

@@ -11,7 +11,9 @@ class BusinessInfo extends React.Component {
         this.handleSubmitBusinessInfo = this.handleSubmitBusinessInfo.bind(this);
     }
 
-
+    /**
+     * Method in charge of change the state
+     */
     handleSubmitBusinessInfo(event) {
         this.setState({
             redirect: true
@@ -19,6 +21,10 @@ class BusinessInfo extends React.Component {
         event.preventDefault();
     }
 
+    /**
+     * If the form was already submit Redirects to the Owner's page
+     * If not, Renders the business information form
+     */
     render() {
         if (this.state.redirect) {
             return <Redirect to='/owner' />
