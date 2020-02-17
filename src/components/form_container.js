@@ -34,15 +34,12 @@ class FormContainer extends React.Component {
 
     handleSubmit = (event) => {
         const axios = require('axios');
-        console.log('Hola');
 
         axios.post('/validate_loan', JSON.stringify(this.state))
             .then(function (response) {
-                console.log('hey SUCCESS POST');
                 console.log(response);
             })
             .catch(function (error) {
-                console.log('hey ERROR POST');
                 console.log(error);
             });
     }
@@ -52,7 +49,7 @@ class FormContainer extends React.Component {
             <div className="form-container">
                 <form>
                     <fieldset>
-                        <legend>Business Information:</legend>
+                        <h3>Business's Information</h3>
                         <label htmlFor="tax-id">
                             Tax Id:
                                 <input
@@ -127,7 +124,7 @@ class FormContainer extends React.Component {
                     </fieldset>
 
                     <fieldset>
-                        <legend>Owner Information:</legend>
+                        <h3>Owner's Information</h3>
                         <label htmlFor="social-security-number">
                             Social Security Number:
                             <input

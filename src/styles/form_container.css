@@ -49,9 +49,18 @@ input {
   background-color: white;
 }
 
+.submit-btn:hover {
+  box-shadow: inset rgb(58, 57, 57) 1px 1px 5px;
+}
+
 @media screen and (min-width: 768px) {
   form {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    row-gap: 15px;
+  }
+
+  fieldset {
+    margin-bottom: 0;
   }
 }
