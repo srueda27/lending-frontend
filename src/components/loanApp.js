@@ -1,5 +1,5 @@
 import React from 'react';
-import FormContainer from './components/formContainer';
+import FormContainer from './formContainer';
 
 class LoanApp extends React.Component {
     constructor(props) {

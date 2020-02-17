@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route, BrowserRouter as Router } from 'react-router-dom'
 import '../styles/form_container.css';
 
 import BusinessInfo from './businessInfo';
@@ -24,7 +25,7 @@ class FormContainer extends React.Component {
             owner_postal_code: ''
         };
 
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSubmitOwnerInfo = this.handleSubmitOwnerInfo.bind(this);
         this.myChangeHandler = this.myChangeHandler.bind(this);
     }
 
@@ -38,7 +39,7 @@ class FormContainer extends React.Component {
         });
     }
 
-    handleSubmit(event) {
+    handleSubmitOwnerInfo(event) {
         const axios = require('axios');
         let self = this;
 
@@ -52,25 +53,25 @@ class FormContainer extends React.Component {
                 console.log(error);
             });
 
-        event.preventDefault()
+        event.preventDefault();
     }
 
     render() {
         return (
             <div className="form-container">
-                <form onSubmit={this.handleSubmit}>
-                    <BusinessInfo setParentState={this.myChangeHandler} />
-
-                    <OwnerInfo setParentState={this.myChangeHandler} />
-
-                    <input
-                        className="submit-btn"
-                        type="submit"
-                        name="submit"
-                        value="Submit Form"
-                        onClick={this.handleSubmit}
-                    />
-                </form>
+                <Router>
+                    <div>
+                        <Route exact path="/"
+                            render={(props) => <BusinessInfo setParentState={this.myChangeHandler} isAuthed={true} onSubmit={this.handleSubmitBusinessInfo} />}
+                        />
+                        <Route path="/business"
+                            render={(props) => <BusinessInfo setParentState={this.myChangeHandler} isAuthed={true} onSubmit={this.handleSubmitBusinessInfo} />}
+                        />
+                        <Route path="/owner"
+                            render={(props) => <OwnerInfo setParentState={this.myChangeHandler} onSubmit={this.handleSubmitOwnerInfo} isAuthed={true} />}
+                        />
+                    </div>
+                </Router>
             </div>
         );
     }

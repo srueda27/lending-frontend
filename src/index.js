@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-import LoanApp from './loanApp';
+import LoanApp from './components/loanApp';
 
 ReactDOM.render(
     <div>
@@ -10,3 +10,4 @@ ReactDOM.render(
     </div>,
     document.getElementById('root')
 );
+
