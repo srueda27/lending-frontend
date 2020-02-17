@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import FormContainer from './components/form_container';
 import './index.css';
+
+import LoanApp from './components/loanApp';
 
 ReactDOM.render(
     <div>
-        <FormContainer />
+        <LoanApp />
     </div>,
     document.getElementById('root')
 );
+

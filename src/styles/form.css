@@ -12,15 +12,16 @@ html {
 }
 
 form {
-  display: block;
+  display: flex;
   padding: 20px;
-  max-width: 1024px;
+  width: 300px;
   margin: auto;
+  flex-direction: column;
 }
 
 fieldset {
   background: white;
-  margin: 0 15px 30px;
+  margin: 0 15px 15px;
   box-shadow: rgb(58, 57, 57) 5px 5px 10px;
 }
 
@@ -49,9 +50,12 @@ input {
   background-color: white;
 }
 
+.submit-btn:hover {
+  box-shadow: inset rgb(58, 57, 57) 1px 1px 5px;
+}
+
 @media screen and (min-width: 768px) {
   form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    width: 400px;
   }
 }
