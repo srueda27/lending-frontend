@@ -19,10 +19,15 @@ class FormContainer extends React.Component {
             owner_city: '',
             owner_state: '',
             owner_postal_code: '',
+            response: '',
+            previous_requested_amount: ''
         };
+
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.myChangeHandler = this.myChangeHandler.bind(this);
     }
 
-    myChangeHandler = (event) => {
+    myChangeHandler(event) {
         const target = event.target;
         const value = target.value;
         const name = target.name;
@@ -32,80 +37,90 @@ class FormContainer extends React.Component {
         });
     }
 
-    handleSubmit = (event) => {
+    handleSubmit(event) {
         const axios = require('axios');
+        let data = JSON.stringify(this.state);
+        let self = this;
 
-        axios.post('/validate_loan', JSON.stringify(this.state))
+        axios.post('/validate_loan', data)
             .then(function (response) {
                 console.log(response);
+
+                self.setState({
+                    response: response['data']['decision'],
+                    previous_requested_amount: response['data']['requested_amount']
+                });
             })
             .catch(function (error) {
                 console.log(error);
             });
+
+        event.preventDefault()
     }
 
     render() {
         return (
             <div className="form-container">
-                <form>
+                <h3>{this.state.response}</h3>
+                <form onSubmit={this.handleSubmit}>
                     <fieldset>
                         <h3>Business's Information</h3>
-                        <label htmlFor="tax-id">
+                        <label htmlFor="tax_id">
                             Tax Id:
                                 <input
-                                id="tax-id"
+                                id="tax_id"
                                 type="text"
-                                name="tax-id"
+                                name="tax_id"
                                 onChange={this.myChangeHandler}
                                 required
                             />
                         </label>
 
-                        <label htmlFor="business-name">
+                        <label htmlFor="business_name">
                             Business Name:
-                                <input id="business-name"
+                                <input id="business_name"
                                 type="text"
-                                name="business-name"
+                                name="business_name"
                                 onChange={this.myChangeHandler}
                                 required
                             />
                         </label>
 
-                        <label htmlFor="business-address">
+                        <label htmlFor="business_address">
                             Business Address:
-                                <input id="business-address"
+                                <input id="business_address"
                                 type="text"
-                                name="business-address"
+                                name="business_address"
                                 onChange={this.myChangeHandler}
                                 required
                             />
                         </label>
 
-                        <label htmlFor="business-city">
+                        <label htmlFor="business_city">
                             City:
-                                <input id="business-city"
+                                <input id="business_city"
                                 type="text"
-                                name="business-city"
+                                name="business_city"
                                 onChange={this.myChangeHandler}
                                 required
                             />
                         </label>
 
-                        <label htmlFor="business-state">
+                        <label htmlFor="business_state">
                             State:
-                                <input id="business-state"
+                                <input id="business_state"
                                 type="text"
-                                name="business-state"
+                                name="business_state"
                                 onChange={this.myChangeHandler}
                                 required
                             />
                         </label>
 
-                        <label htmlFor="business-postal-code">
+                        <label htmlFor="business_postal_code">
                             Postal Code:
-                                <input id="business-postal-code"
+                                <input id="business_postal_code"
                                 type="text"
-                                name="business-postal-code"
+                                name="business_postal_code"
                                 onChange={this.myChangeHandler}
                                 required
                             />
@@ -125,78 +140,78 @@ class FormContainer extends React.Component {
 
                     <fieldset>
                         <h3>Owner's Information</h3>
-                        <label htmlFor="social-security-number">
+                        <label htmlFor="social_security_number">
                             Social Security Number:
                             <input
-                                id="social-security-number"
+                                id="social_security_number"
                                 type="text"
-                                name="social-security-number"
+                                name="social_security_number"
                                 onChange={this.myChangeHandler}
                                 required
                             />
                         </label>
 
-                        <label htmlFor="owner-name">
+                        <label htmlFor="owner_name">
                             Name:
                             <input
-                                id="owner-name"
+                                id="owner_name"
                                 type="text"
-                                name="owner-name"
+                                name="owner_name"
                                 onChange={this.myChangeHandler}
                                 required
                             />
                         </label>
 
-                        <label htmlFor="owner-email">
+                        <label htmlFor="owner_email">
                             Email:
                             <input
-                                id="owner-email"
+                                id="owner_email"
                                 type="email"
-                                name="owner-email"
+                                name="owner_email"
                                 onChange={this.myChangeHandler}
                                 required
                             />
                         </label>
 
-                        <label htmlFor="owner-address">
+                        <label htmlFor="owner_address">
                             Owner Address:
                             <input
-                                id="owner-address"
+                                id="owner_address"
                                 type="text"
-                                name="owner-address"
+                                name="owner_address"
                                 onChange={this.myChangeHandler}
                                 required
                             />
                         </label>
 
-                        <label htmlFor="owner-city">
+                        <label htmlFor="owner_city">
                             City:
                             <input
-                                id="owner-city"
+                                id="owner_city"
                                 type="text"
-                                name="owner-city"
+                                name="owner_city"
                                 onChange={this.myChangeHandler}
                                 required
                             />
                         </label>
 
-                        <label htmlFor="owner-state">
+                        <label htmlFor="owner_state">
                             State:
                             <input
-                                id="owner-state"
+                                id="owner_state"
                                 type="text"
-                                name="owner-state"
+                                name="owner_state"
                                 onChange={this.myChangeHandler}
                                 required
                             />
                         </label>
 
-                        <label htmlFor="owner-postal-code">
+                        <label htmlFor="owner_postal_code">
                             Postal Code:
                             <input
-                                id="owner-postal-code"
+                                id="owner_postal_code"
                                 type="text"
-                                name="owner-postal-code"
+                                name="owner_postal_code"
                                 onChange={this.myChangeHandler}
                                 required
                             />
